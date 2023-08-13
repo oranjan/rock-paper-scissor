@@ -33,7 +33,7 @@ function playRound(computerSelection, playerSelection) {
 function game() {
     for (let i = 0; i < 5; i++) {
         const computerSelection = getComputerChoice();
-        const playerSelection = prompt("enter").toLowerCase();
+        const playerSelection = prompt("enter stone ,paper or scissor").toLowerCase();
         playRound(computerSelection, playerSelection);
     }
 

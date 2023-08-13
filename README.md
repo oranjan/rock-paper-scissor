@@ -3,11 +3,12 @@
 This is a simple JavaScript project that implements the logic for a Stone-Paper-Scissors game. While the project is currently in development, it aims to provide the core game logic for playing Rock-Paper-Scissors.
 
 ## Table of Contents
--[Live]
+- [Live](#live)
 - [Introduction](#introduction)
 - [How to Play](#how-to-play)
 
 ## Live  
+Live : https://ranjanmehta17.github.io/rock-paper-scissor/
 
 ## Introduction
 
@@ -15,6 +16,6 @@ The Rock-Paper-Scissors game is a popular hand game usually played between two p
 
 ## How to Play
 
-As the game is currently in development and lacks a user interface, you can still interact with it through the Prompt. Here's how you might interact with the game logic programmatically:
+As the game is currently in development and lacks a user interface, you can still interact with it through the Prompt.
 
 
