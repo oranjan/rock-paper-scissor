@@ -1,43 +1,49 @@
-const choices = ["stone", "paper", "scissors"]
-
+const choices = ["rock", "paper", "scissors"]
 
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * 3)]
 }
 
 
+// zero for  pc W
+//1 is for PC L ,user w 
+//draw in no one
 
-let countZero = 0, countOne = 0, draw = 0;
 
 function playRound(computerSelection, playerSelection) {
-    if (playerSelection == computerSelection) { return draw++ }
 
-    if (playerSelection == "stone") {
-        if (computerSelection == "paper") { return ++countZero }
-        else { return ++countOne }
+    if (computerSelection === playerSelection) {
+        return "draw"
     }
 
-    if (playerSelection == "paper") {
-        if (computerSelection == "scissors") { return ++countZero }
-        else { return ++countOne }
-    }//good
+    else if ((computerSelection === "rock" && playerSelection === "scissor") || 
+    (computerSelection === "paper" && playerSelection === "rock") ||
+     (computerSelection === "scissor" && playerSelection === "paper")) 
+    {
+        return "win"
+    }
 
-    if (playerSelection == "scissors") {
-        if (computerSelection == "stone") { return ++countZero }
-        else { return ++countOne }
+    else {
+        return "lose"
     }
 
 }
 
 
 function game() {
+    let countZero = 0, countOne = 0, draw = 0;
     for (let i = 0; i < 5; i++) {
         const computerSelection = getComputerChoice();
-        const playerSelection = prompt("enter stone ,paper or scissor").toLowerCase();
-        playRound(computerSelection, playerSelection);
-    }
+        const playerSelection = prompt("enter rock ,paper or scissor").toLowerCase();
+        const result= playRound(computerSelection, playerSelection);
+            if(result==="win"){countZero++}
+            else if (result==="lose") {countOne++}
+            else {draw++}
+    }   
 
-    if (countOne > countZero) {
+    if(countZero===countOne){console.log("Game is DRAW")}
+
+    else if(countZero<countOne) {
         console.log("Player wins")
         console.log(`Player wins ${countOne} times ,Computer wins ${countZero} times,game draw ${draw} times`)
     }
@@ -45,7 +51,7 @@ function game() {
         console.log("Computer wins")
         console.log(`Player wins ${countOne} times ,Computer wins ${countZero} times,game draw ${draw} times`)
     }
-    }
+}
 
 
 
