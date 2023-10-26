@@ -1,98 +1,71 @@
-const choices = ["rock", "paper", "scissor"]
+const choices = ["rock", "paper", "scissor"];
 
 function getComputerChoice() {
-    return choices[Math.floor(Math.random() * 3)]
+    return choices[Math.floor(Math.random() * 3)];
 }
-
-
-// zero for  pc W
-//1 is for PC L ,user w 
-//draw in no one
-
 
 function playRound(playerSelection, computerSelection) {
-
     if (computerSelection === playerSelection) {
-        return "draw"
-    }
-
-    else if ((computerSelection === "rock" && playerSelection === "scissor") ||
+        return "draw";
+    } else if (
+        (computerSelection === "rock" && playerSelection === "scissor") ||
         (computerSelection === "paper" && playerSelection === "rock") ||
-        (computerSelection === "scissor" && playerSelection === "paper")) {
-        return "win" //pc wins
+        (computerSelection === "scissor" && playerSelection === "paper")
+    ) {
+        return "win"; // PC wins
+    } else {
+        return "lose"; // PC loses and user wins
     }
-
-    else {
-        return "lose" //pc loses
-    }
-
 }
-
-
-// function game() {
-//     let countZero = 0, countOne = 0, draw = 0;
-//     for (let i = 0; i < 5; i++) {
-//         const result= playRound( getComputerChoice(), playerSelection);
-//             if(result==="win"){countZero++}
-//             else if (result==="lose") {countOne++}
-//             else {draw++}
-//     }   
-
-//     if(countZero===countOne){console.log("Game is DRAW")}
-
-//     else if(countZero<countOne) {
-//         console.log("Player wins")
-//         console.log(`Player wins ${countOne} times ,Computer wins ${countZero} times,game draw ${draw} times`)
-//     }
-//     else {
-//         console.log("Computer wins")
-//         console.log(`Player wins ${countOne} times ,Computer wins ${countZero} times,game draw ${draw} times`)
-//     }
-// }
-
-// game();
 
 let countZero = 0;
 let countOne = 0;
 let countDraw = 0;
+let round = 1; // Initialize round to 1
 
-const containerDiv = document.getElementById("container")
+const containerDiv = document.getElementById("container");
+const currentResult = document.getElementById("current-result");
+const finalResult = document.getElementById("final-result");
 
-const rockBtn = document.getElementById("rock-btn")
+const rockBtn = document.getElementById("rock-btn");
 rockBtn.addEventListener("click", () => {
-    const result = playRound("rock", getComputerChoice())
+    gameResult("rock");
+});
+
+const paperBtn = document.getElementById("paper-btn");
+paperBtn.addEventListener("click", () => {
+    gameResult("paper");
+});
+
+const scissorBtn = document.getElementById("scissor-btn");
+scissorBtn.addEventListener("click", () => {
+    gameResult("scissor");
+});
+
+function gameResult(userInput) {
+    const computerSelection = getComputerChoice();
+    const result = playRound(userInput, computerSelection);
 
     if (result === "draw") {
-        countDraw++
+        currentResult.innerText = "The battle is a draw but WIN THE WAR";
+        countDraw++;
+    } else if (result === "win") {
+        currentResult.innerText = "YOU lost the battle, WIN THE WAR";
+        countZero++;
+    } else {
+        currentResult.innerText = "You only won the battle, now WIN THE WAR";
+        countOne++;
     }
-    else if (result === "win") {
-        countZero++
-    }
-    else { countOne++ }
 
-    if (countZero + countOne + countDraw < 6) {
-        containerDiv.innerText = "PC" + countZero + " USER" + countOne + " DRAW" + countDraw;
-    } 
-    else {
-        containerDiv.innerText= countZero===countOne?"DRAW":""
-        
-        containerDiv.innerText=countOne>countZero?"USER WINS":"PC WINS"
-        
+    containerDiv.innerText = `Machine: ${countZero} | You: ${countOne} | Draw: ${countDraw}`;
+
+    if (countZero === 3 || countOne === 3) {
+        containerDiv.innerText = countZero === countOne ? "This war went draw" : containerDiv.innerText; // Last score
+        const text = countOne > countZero ? "You won this war, humanity is saved" : "Machine won the war, humanity is doomed";
+        finalResult.innerHTML = text;
+        currentResult.innerText = text;
         countZero = countOne = countDraw = 0;
+        round++;
+        finalResult.innerText = "ROUND: " + round + " of war";
     }
-
 }
-)
-
-
-const paperBtn = document.getElementById("paper-btn")
-paperBtn.addEventListener("click", () =>
-    containerDiv.innerText = playRound("paper", getComputerChoice())
-)
-
-const scissorBtn = document.getElementById("scissor-btn")
-scissorBtn.addEventListener("click", () =>
-    containerDiv.innerText = playRound("scissor", getComputerChoice())
-)
-
-

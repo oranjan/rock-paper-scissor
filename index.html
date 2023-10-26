@@ -1,29 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>stone-paper-scissor Game</title>
+    <title>Stone-Paper-Scissors Game</title>
 </head>
 <body>
+    <header>
+        <h1 class="game-title">Stone-Paper-Scissors Game</h1>
+    </header>
 
-    <button 
-    id="rock-btn"
-    >rock</button>
+    <main>
+        
+        <h1 id="current-result">START THE GAME</h1>
+        <h2 id="final-result">Choose your weapon. First to score 3 points wins the game</h2>
+    </main>
 
-    <button
-    id="paper-btn"
-     >paper
-    </button>
+    <section id="container">
+        <p>MACHINE: <span id="machine-score">0</span> YOU : <span id="user-score">0</span> DRAW : <span id="draw-score">0</span></p>
+    </section>
 
-    <button 
-    id="scissor-btn"
-    >scissor
-    </button>
-<div id="container">
+    <section class="buttons">
+        <button id="rock-btn" class="game-button">🪨</button>
+        <button id="paper-btn" class="game-button">📃</button>
+        <button id="scissor-btn" class="game-button">✂️</button>
+    </section>
     
-</div>
+    <script src="app.js"></script>
 </body>
-<script src="app.js"></script>
 </html>
