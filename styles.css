@@ -18,7 +18,12 @@ body {
 }
 
 /* Style the header with a dystopian gradient background, padding, and a border */
+
 header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background: linear-gradient(135deg, #1a1a1a, #0d0d0d, #0a0a0a);
     padding: 10px;
     border-bottom: 3px solid #ff0000;
@@ -26,10 +31,28 @@ header {
 
 }
 
-/* Style the game title */
 header h1 {
+    /* margin: auto auto; */
+    text-align: center;
+    flex: 1; 
     color: #ff0000;
 }
+
+#music-toggle {
+    background-color: #007bff; /* Change this to your desired background color */
+    color: #fff; /* Change this to your desired text color */
+    padding: 10px 20px; /* Adjust the padding as needed */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #music-toggle:hover {
+    background-color: #0056b3; /* Change this to your desired hover background color */
+  }
+
+/* Style the game title */
+
 
 main {
     padding: 10px;
